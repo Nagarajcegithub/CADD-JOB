@@ -1,3 +1,9 @@
-module a(input logic a,b,c,d,output logic y);
-assign y=((~a)&(~b)&(~c)&(~d))|(a&(~b)&(~c))|(a&(~b)&(c)&(~d))|(a&b&d)|((~a)&(~b)&(c)&(~d))|(b&(~c)&(d))|(~a);
-endmodule
+module job_q_2_1 (
+    input logic InputA, InputB, InputC, InputD,
+    output logic OutputY
+);
+    assign OutputY = ~InputA | 
+                     (InputA & InputB & InputD) | 
+                     (InputA & InputC & ~InputD) | 
+                     (InputA & ~InputB & ~InputC);
+Endmodule
