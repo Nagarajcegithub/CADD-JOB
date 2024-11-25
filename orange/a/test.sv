@@ -1,18 +1,31 @@
-module a_tb;
-  logic a, b, c, d;
-  logic y;
-  a uut(.a(a),.b(b),
-    .c(c),.d(d),.y(y));
-  initial 
-  begin
-    a = 0;
-    b = 0;
-    c = 0;
-    d = 0;
+module job_q_2_1_tb;
+    reg InputA, InputB, InputC, InputD;  
+    wire OutputY;                        
     
-    #10 a=1 ; b=0 ; c=1 ; d=1;
-    #10 a=0 ; b=0 ; c=1 ;d=1;
-    #10 a=1; b=0; c=0 ; d=1;
-    $finish;
-  end
+    job_q_2_1 dut (
+        InputA, 
+        InputB, 
+        InputC, 
+        InputD, 
+        OutputY
+    );
+    initial begin
+        #20; InputA = 0; InputB = 0; InputC = 0; InputD = 0;
+        #10; InputA = 0; InputB = 0; InputC = 0; InputD = 1;
+        #10; InputA = 0; InputB = 0; InputC = 1; InputD = 0;
+        #10; InputA = 0; InputB = 0; InputC = 1; InputD = 1;
+        #10; InputA = 0; InputB = 1; InputC = 0; InputD = 0;
+        #10; InputA = 0; InputB = 1; InputC = 0; InputD = 1;
+        #10; InputA = 0; InputB = 1; InputC = 1; InputD = 0;
+        #10; InputA = 0; InputB = 1; InputC = 1; InputD = 1;
+        #10; InputA = 1; InputB = 0; InputC = 0; InputD = 0;
+        #10; InputA = 1; InputB = 0; InputC = 0; InputD = 1;
+        #10; InputA = 1; InputB = 0; InputC = 1; InputD = 0;
+        #10; InputA = 1; InputB = 0; InputC = 1; InputD = 1;
+        #10; InputA = 1; InputB = 1; InputC = 0; InputD = 0;
+        #10; InputA = 1; InputB = 1; InputC = 0; InputD = 1;
+        #10; InputA = 1; InputB = 1; InputC = 1; InputD = 0;
+        #10; InputA = 1; InputB = 1; InputC = 1; InputD = 1;
+    end
 endmodule
+
